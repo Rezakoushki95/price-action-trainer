@@ -1,10 +1,10 @@
 /**
- * Al Brooks opening-hour trainer.
+ * Price-action trainer.
  *
  * One real session of ES futures, revealed one bar at a time. Tap to advance,
  * hold to fast-forward, trade at the close or do nothing. The 20-bar EMA and the
  * magnets carried down from the daily chart are the only things on the screen,
- * because they are the only things Brooks needs to read a chart.
+ * because they are the only things a price-action trader needs to read a chart.
  */
 
 import React, { useEffect, useMemo, useState } from 'react';

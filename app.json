@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "Brooks Trainer",
-    "slug": "brooks-trainer",
+    "name": "Price Action Trainer",
+    "slug": "price-action-trainer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "brookstrainer",
+    "scheme": "priceactiontrainer",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0B0E13",
     "primaryColor": "#0B0E13",
     "ios": {
-      "bundleIdentifier": "dk.mamamilla.brookstrainer",
+      "bundleIdentifier": "dk.mamamilla.priceactiontrainer",
       "supportsTablet": false,
       "requireFullScreen": true,
       "infoPlist": {
@@ -18,7 +18,7 @@
       }
     },
     "android": {
-      "package": "dk.mamamilla.brookstrainer",
+      "package": "dk.mamamilla.priceactiontrainer",
       "adaptiveIcon": {
         "backgroundColor": "#0B0E13",
         "foregroundImage": "./assets/android-icon-foreground.png",

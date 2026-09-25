@@ -1,7 +1,7 @@
 /**
  * Scoring.
  *
- * The central problem: a textbook-correct Brooks trade loses roughly four times
+ * The central problem: a textbook-correct price-action trade loses roughly four times
  * in ten. Grading purely on outcome therefore punishes good decisions and trains
  * superstition -- the player learns to avoid whatever they did last time they
  * lost, which is noise.
@@ -12,7 +12,7 @@
  *   XP     is awarded on PROCESS -- did you take a real setup, did you pass a
  *          bad one -- and is what drives levels and magnet unlocks.
  *
- * Passing earns XP. This is not a nicety. Brooks' single biggest practical
+ * Passing earns XP. This is not a nicety. The single biggest practical price-action
  * lesson is that most bars are untradeable, and an app that only rewards action
  * trains overtrading, which is the exact habit it is supposed to cure.
  */

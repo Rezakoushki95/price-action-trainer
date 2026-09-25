@@ -3,7 +3,7 @@
  *
  * Deliberately hand-rolled rather than a charting library, because the two
  * things that matter most here -- a bar drawing itself in over ~220ms, and
- * Brooks-style magnet rays labelled at the right edge -- are exactly what
+ * magnet rays labelled at the right edge -- are exactly what
  * off-the-shelf charts fight you on.
  *
  * Only one indicator is ever drawn: the 20-bar EMA.

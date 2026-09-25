@@ -1,15 +1,15 @@
 /**
- * Brooks' pullback counting, mechanised.
+ * Pullback counting, mechanised.
  *
  * In a bull trend the market pulls back, and the FIRST bar whose high pokes above
  * the previous bar's high ends that pullback: a High 1. If price then rolls over
  * into another leg down and again pokes above a prior bar's high, that is a
- * High 2. Brooks prefers the second entry, because the market tries to do
+ * High 2. The playbook prefers the second entry, because the market tries to do
  * everything twice, and the first attempt usually fails.
  *
  * Lows mirror it exactly.
  *
- * SIMPLIFICATION, STATED PLAINLY: Brooks counts legs by eye, using swing
+ * SIMPLIFICATION, STATED PLAINLY: A discretionary trader counts legs by eye, using swing
  * structure a human reads in context. This implementation uses the 20-bar EMA as
  * the trend filter and resets the count when price closes on the other side of
  * it. That is a defensible mechanical proxy, not a faithful reproduction of his
@@ -26,7 +26,7 @@ export type SetupKind = 'H1' | 'H2' | 'H3' | 'L1' | 'L2' | 'L3';
 export interface SetupSignal {
   kind: SetupKind | null;
   dir: Direction | null;
-  /** 0..1. How much this bar looks like something Brooks would actually take. */
+  /** 0..1. How much this bar looks like something a disciplined trader would actually take. */
   quality: number;
   /** Plain-English reasons, shown as feedback after the decision. */
   reasons: string[];
@@ -103,7 +103,7 @@ export interface SetupContext {
 /**
  * How good a signal this bar is, and in which direction.
  *
- * Quality is a blend of three things Brooks weighs: whether there is a countable
+ * Quality is a blend of three things the playbook weighs: whether there is a countable
  * pullback at all, how strong the signal bar itself is, and whether there is
  * enough room to a magnet to make the trader's equation work.
  */
@@ -126,7 +126,7 @@ export function setupAt(ctx: SetupContext, index: number): SetupSignal {
     `${kind}: pullback ${count} in a ${dir === 'long' ? 'bull' : 'bear'} trend`,
   ];
 
-  // Brooks strongly prefers the second entry.
+  // The playbook strongly prefers the second entry.
   let quality = count === 2 ? 0.55 : count === 1 ? 0.3 : 0.35;
   if (count === 2) reasons.push('second entry -- the market tries to do things twice');
 

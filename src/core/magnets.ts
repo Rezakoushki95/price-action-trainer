@@ -1,12 +1,12 @@
 /**
- * Magnets -- the price levels Brooks says the market is drawn toward.
+ * Magnets -- the price levels the market is drawn toward.
  *
  * Two rules govern this list, and both are deliberate.
  *
  * 1. Every level is a HARD NUMBER read off bars the player could scroll back and
  *    see. Nothing here needs interpretation, so the app can score against them
  *    without the player being able to argue. Measured moves, breakout-point
- *    retests, wedge targets and trend channel lines are all genuine Brooks
+ *    retests, wedge targets and trend channel lines are all genuine price-action
  *    magnets and all deliberately absent: they are subjective, and a subjective
  *    level has no business in an auto-graded decision. They belong in the
  *    explanation copy instead.
@@ -27,18 +27,18 @@ export interface MagnetMeta {
   name: string;
   /** Player level at which this line starts being drawn. */
   unlocksAt: number;
-  /** Why Brooks cares -- shown when the magnet is unlocked. */
+  /** Why it matters -- shown when the magnet is unlocked. */
   why: string;
 }
 
-/** Ordered by when they unlock, then by how often Brooks refers to them. */
+/** Ordered by when they unlock, then by how often they come into play. */
 export const MAGNET_META: MagnetMeta[] = [
   {
     key: 'yHigh',
     label: 'YH',
     name: "Yesterday's high",
     unlocksAt: 1,
-    why: 'The level Brooks draws most. Trading above it is the day trying to become a bull day.',
+    why: 'The level day traders draw most. Trading above it is the day trying to become a bull day.',
   },
   {
     key: 'yLow',
@@ -135,7 +135,7 @@ export function targetMagnet(
 
 /**
  * Reward-to-risk if the position ran to the next magnet. This is the left-hand
- * side of Brooks' trader's equation, and showing it before the player commits is
+ * side of the trader's equation, and showing it before the player commits is
  * the point of the whole magnet system.
  */
 export function rewardToRisk(

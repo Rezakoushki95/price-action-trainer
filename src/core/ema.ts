@@ -1,6 +1,6 @@
 /**
  * The 20-bar exponential moving average -- the only indicator in this app.
- * Brooks puts it on every chart and every timeframe, so it is never optional
+ * Price-action traders keep it on every chart and every timeframe, so it is never optional
  * and never configurable.
  */
 

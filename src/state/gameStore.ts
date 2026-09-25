@@ -332,7 +332,7 @@ export const useGame = create<GameState>()(
       replaySession: () => get().hydrateSession(get().sessionIdx),
     }),
     {
-      name: 'brooks-trainer',
+      name: 'price-action-trainer',
       storage: createJSONStorage(() => AsyncStorage),
       // Only the player's progress survives a restart; the session in flight does not.
       partialize: (s): Persisted => ({

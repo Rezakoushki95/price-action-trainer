@@ -72,7 +72,7 @@ describe('averageRange', () => {
 });
 
 describe('describe', () => {
-  it('uses Brooks vocabulary the player will meet again when they read him', () => {
+  it('uses standard price-action vocabulary the player will meet again in any book', () => {
     expect(describeBar(bar(100, 110, 99, 110))).toBe('strong bull trend bar');
     expect(describeBar(bar(110, 111, 100, 100))).toBe('strong bear trend bar');
     expect(describeBar(bar(105, 110, 100, 105.5))).toBe('doji');

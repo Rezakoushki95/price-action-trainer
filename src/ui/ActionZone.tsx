@@ -6,7 +6,7 @@
  *
  * The reward-to-risk to the next magnet is printed on the entry buttons rather
  * than tucked away, because with no fixed target in this game that number IS the
- * decision -- it is the left-hand side of Brooks' trader's equation, made
+ * decision -- it is the left-hand side of the trader's equation, made
  * visible before the player commits instead of explained afterwards.
  */
 

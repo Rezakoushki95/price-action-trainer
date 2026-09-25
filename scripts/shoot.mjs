@@ -59,7 +59,7 @@ await page.setViewport(PHONE);
 // random seed and the shots show a different session each time.
 await page.evaluateOnNewDocument((seed) => {
   localStorage.setItem(
-    'brooks-trainer',
+    'price-action-trainer',
     JSON.stringify({
       state: {
         seed,

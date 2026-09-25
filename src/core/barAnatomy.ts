@@ -1,7 +1,7 @@
 /**
- * Reading a single bar, the Brooks way.
+ * Reading a single bar, the price-action way.
  *
- * Brooks judges a bar by where it closed relative to its own range and how much
+ * Price action reads a bar by where it closed relative to its own range and how much
  * of that range is body rather than tail. A bull trend bar closing on its high is
  * strong; the same size bar closing mid-range is a doji and means the opposite.
  * These primitives are the vocabulary the feedback copy and the setup detectors
@@ -21,7 +21,7 @@ export interface BarAnatomy {
   closePosition: number;
   isBull: boolean;
   isBear: boolean;
-  /** Body is at least half the range -- Brooks' "trend bar". */
+  /** Body is at least half the range -- the classic "trend bar". */
   isTrendBar: boolean;
   /** Body is a quarter of the range or less -- indecision. */
   isDoji: boolean;
@@ -51,7 +51,7 @@ export function anatomy(bar: Bar): BarAnatomy {
 
 /**
  * How much of `bar` overlaps the previous bar's range, as a fraction of the
- * previous bar's range. High overlap across several bars is Brooks' signature of
+ * previous bar's range. High overlap across several bars is the classic signature of
  * a trading range; near-zero overlap is a breakout.
  */
 export function overlap(bar: Bar, prev: Bar): number {
@@ -76,7 +76,7 @@ export function averageRange(bars: Bar[], index: number, lookback = 20): number 
 
 /**
  * A one-line plain-English read of the bar, used in feedback. Deliberately the
- * same words Brooks uses, so the vocabulary transfers when the player reads him.
+ * standard price-action vocabulary, so it transfers to any book on the subject.
  */
 export function describe(bar: Bar): string {
   const a = anatomy(bar);

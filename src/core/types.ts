@@ -31,7 +31,7 @@ export interface DailyBar {
 }
 
 /**
- * The price levels Al Brooks refers to as magnets. Every one is a hard number
+ * The price levels price-action traders call magnets. Every one is a hard number
  * taken from bars the player could scroll back and see -- no interpretation, so
  * scoring against them cannot be argued with.
  */

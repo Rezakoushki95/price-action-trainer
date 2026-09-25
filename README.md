@@ -1,8 +1,8 @@
-# Al Brooks Trainer
+# Al Price Action Trainer
 
-[![CI](https://github.com/Rezakoushki95/brooks-trainer/actions/workflows/ci.yml/badge.svg)](https://github.com/Rezakoushki95/brooks-trainer/actions/workflows/ci.yml)
+[![CI](https://github.com/Rezakoushki95/price-action-trainer/actions/workflows/ci.yml/badge.svg)](https://github.com/Rezakoushki95/price-action-trainer/actions/workflows/ci.yml)
 
-A mobile trading _trainer_ that teaches Al Brooks price action, simplified, using the
+A mobile trading _trainer_ that teaches discretionary price action, simplified, using the
 short-video reinforcement loop. Not a backtester and not a charting app: a game whose unit of
 play is **one real trading day of ES futures, revealed one bar at a time**.
 
@@ -21,7 +21,7 @@ avoid smothering the loop that already exists. Two consequences are treated as n
 - **Bars animate in, they never snap in.** A bar that appears instantly is information. A bar
   whose wick extends and body fills over ~220ms is a slot reel.
 - **Losses are as watchable as wins.** Near-miss rendering — _stopped by one tick, then it ran_ —
-  is more motivating than a clean loss, and it is the most important emotional lesson in Brooks'
+  is more motivating than a clean loss, and it is the most important emotional lesson in price action
   material.
 
 ## The loop
@@ -57,7 +57,7 @@ decoration and become the thing the game is actually played on.
 
 ## Magnets
 
-Only the 20-bar EMA is ever drawn as an indicator — Brooks puts it on every chart, so it is not
+Only the 20-bar EMA is ever drawn as an indicator — price-action traders keep it on every chart, so it is not
 configurable. The horizontal levels unlock as you level up, which solves chart clutter and player
 progression with one mechanism:
 
@@ -70,7 +70,7 @@ progression with one mechanism:
 
 Every one is a **hard number read off bars the player could scroll back and see**, so scoring
 against them cannot be argued with. Measured moves, breakout-point retests, wedge targets and
-trend channel lines are all genuine Brooks magnets and all deliberately absent: they are
+trend channel lines are all genuine price-action magnets and all deliberately absent: they are
 subjective, and a subjective level has no business in an auto-graded decision.
 
 A magnet too far away to fit on screen is **pinned to the top or bottom edge with the distance to
@@ -83,13 +83,13 @@ a magnet _comes from_.
 
 ## Scoring
 
-A textbook-correct Brooks trade loses roughly four times in ten, so grading purely on outcome
+A textbook-correct price-action trade loses roughly four times in ten, so grading purely on outcome
 punishes good decisions and trains superstition. The app keeps two separate books:
 
 - **Money in R**, honestly, including the losses.
 - **XP on process** — did you take a real setup, did you pass a bad one — which drives levels.
 
-**Passing earns XP.** Brooks' biggest practical lesson is that most bars are untradeable, and an
+**Passing earns XP.** Price action's biggest practical lesson is that most bars are untradeable, and an
 app that only rewards action trains the exact habit it exists to cure. You can lose money on a
 session and still level up, and the summary says so out loud.
 
@@ -189,7 +189,7 @@ Sessions with fewer than ten days of daily history behind them are dropped: a tw
 looks broken, and the rail is the feature the app is built around.
 
 Normalising costs nothing: distances, R multiples, the EMA and the magnets are all relative
-anyway. It arguably teaches better, since Brooks is about structure rather than price level.
+anyway. It arguably teaches better, since price action is about structure rather than price level.
 
 The build fails if any of it leaks, and `src/core/__tests__/data.test.ts` re-checks the shipped
 file on every test run.
@@ -236,7 +236,7 @@ simulator and why a change of rendering platform would not touch them.
 - **The reveal animation runs on the JS thread** via `requestAnimationFrame`, not on the UI thread
   via Reanimated worklets. Only the newest bar is rebuilt per frame so it should hold up, but if
   it stutters on a real device this is the first thing to move.
-- **The setup detector is a stated simplification.** Brooks counts pullback legs by eye using
+- **The setup detector is a stated simplification.** A discretionary trader counts pullback legs by eye using
   swing structure a human reads in context; `core/setups.ts` uses the 20-bar EMA as a trend filter
   and resets the count when price closes through it. That is why it drives XP but never decides
   whether the player was _right_ — the money score comes from what price actually did.

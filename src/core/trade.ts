@@ -139,7 +139,7 @@ export function resolve(pos: LivePosition, bars: Bar[], lastIndex: number): Clos
 }
 
 /**
- * How close a stop-out came to being a winner. Brooks talks about this constantly
+ * How close a stop-out came to being a winner. Price-action literature dwells on this constantly
  * and it is the most emotionally sticky moment in the app, so it gets rendered
  * rather than buried.
  */

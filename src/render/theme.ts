@@ -27,7 +27,7 @@ export const theme = {
   magnet: '#5B7BA8',
   magnetText: '#9FB6D4',
 
-  /** Yesterday's high and low get more weight -- they are the levels Brooks draws most. */
+  /** Yesterday's high and low get more weight -- they are the levels day traders draw most. */
   magnetKey: '#7FA8DC',
 
   entry: '#E6EAF0',
