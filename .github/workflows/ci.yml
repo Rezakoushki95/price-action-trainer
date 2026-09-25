@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    name: Lint, typecheck, test, bundle
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format check
+        run: npm run format:check
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Unit and integration tests
+        run: npm test
+
+      - name: Project health
+        run: npx expo-doctor
+
+      # Proves the native JS bundle still builds, and that nothing identifying
+      # (dates, symbol, provenance) has crept back into it.
+      - name: Android bundle and leak check
+        run: |
+          npx expo export --platform android --output-dir /tmp/bundle --clear
+          BUNDLE=$(ls /tmp/bundle/_expo/static/js/android/*.hbc | head -1)
+          for pat in '2026-0' 'ES=F' 'prevDate' 'generatedAt'; do
+            if grep -q -a "$pat" "$BUNDLE"; then
+              echo "::error::shipped bundle contains '$pat'"; exit 1
+            fi
+          done
+          echo "bundle clean"
