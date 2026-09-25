@@ -1,0 +1,8 @@
+node_modules
+dist-web
+android
+ios
+.expo
+src/data/sessions.json
+data-meta
+package-lock.json

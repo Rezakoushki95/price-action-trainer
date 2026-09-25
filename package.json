@@ -1,7 +1,31 @@
 {
-  "name": "tradingapp",
+  "name": "brooks-trainer",
   "version": "1.0.0",
+  "description": "Mobile trainer for Al Brooks price action: one real ES session revealed one bar at a time, scored on process, not outcome.",
+  "author": "rkgroundley",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=20.19.4"
+  },
   "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "data": "node scripts/fetch-sessions.mjs",
+    "web:build": "expo export --platform web --output-dir dist-web --clear",
+    "web:serve": "node scripts/serve-web.mjs",
+    "shoot": "node scripts/shoot.mjs",
+    "preweb": "node scripts/copy-canvaskit.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
     "@shopify/react-native-skia": "2.6.2",
@@ -22,24 +46,15 @@
     "@expo/metro-runtime": "~57.0.11",
     "@types/node": "^26.2.0",
     "@types/react": "~19.2.2",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~57.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "prettier": "^3.9.9",
     "puppeteer-core": "^24.43.1",
     "react-dom": "19.2.3",
     "react-native-web": "^0.21.2",
     "typescript": "~6.0.3",
     "vitest": "^4.1.10"
-  },
-  "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "data": "node scripts/fetch-sessions.mjs",
-    "web:build": "expo export --platform web --output-dir dist-web --clear",
-    "web:serve": "node scripts/serve-web.mjs",
-    "shoot": "node scripts/shoot.mjs",
-    "preweb": "node scripts/copy-canvaskit.mjs"
-  },
-  "private": true
+  }
 }
