@@ -2,8 +2,13 @@
   "name": "brooks-trainer",
   "version": "1.0.0",
   "description": "Mobile trainer for Al Brooks price action: one real ES session revealed one bar at a time, scored on process, not outcome.",
-  "author": "rkgroundley",
+  "author": "Reza Koushki (https://github.com/Rezakoushki95)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rezakoushki95/brooks-trainer.git"
+  },
+  "homepage": "https://github.com/Rezakoushki95/brooks-trainer#readme",
   "private": true,
   "engines": {
     "node": ">=20.19.4"
