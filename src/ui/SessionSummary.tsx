@@ -126,13 +126,29 @@ export function SessionSummary(p: Props) {
 
       <View style={styles.actions}>
         <HoldButton label="REPLAY" onTap={p.onReplay} tint={theme.textDim} fill={theme.surface} />
-        <HoldButton label="NEXT SESSION" onTap={p.onNext} tint={theme.text} fill={theme.surfaceHi} flex={1.4} />
+        <HoldButton
+          label="NEXT SESSION"
+          onTap={p.onNext}
+          tint={theme.text}
+          fill={theme.surfaceHi}
+          flex={1.4}
+        />
       </View>
     </ScrollView>
   );
 }
 
-function Row({ label, value, tint = theme.text, note }: { label: string; value: string; tint?: string; note?: string }) {
+function Row({
+  label,
+  value,
+  tint = theme.text,
+  note,
+}: {
+  label: string;
+  value: string;
+  tint?: string;
+  note?: string;
+}) {
   return (
     <View style={styles.row}>
       <View style={{ flex: 1 }}>
@@ -151,7 +167,13 @@ const styles = StyleSheet.create({
   headline: { flexDirection: 'row', marginBottom: 14 },
   big: { flex: 1 },
   bigValue: { fontSize: 30, fontWeight: '800', fontVariant: ['tabular-nums'] },
-  bigCaption: { color: theme.textFaint, fontSize: 10, fontWeight: '700', letterSpacing: 1, marginTop: 2 },
+  bigCaption: {
+    color: theme.textFaint,
+    fontSize: 10,
+    fontWeight: '700',
+    letterSpacing: 1,
+    marginTop: 2,
+  },
   lesson: {
     color: theme.textDim,
     fontSize: 12,
@@ -169,11 +191,23 @@ const styles = StyleSheet.create({
     borderLeftWidth: 3,
     borderLeftColor: theme.magnetKey,
   },
-  unlockTitle: { color: theme.magnetKey, fontSize: 10, fontWeight: '800', letterSpacing: 1, marginBottom: 8 },
+  unlockTitle: {
+    color: theme.magnetKey,
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 1,
+    marginBottom: 8,
+  },
   unlockRow: { marginBottom: 8 },
   unlockName: { color: theme.text, fontSize: 13, fontWeight: '700' },
   unlockWhy: { color: theme.textDim, fontSize: 11, lineHeight: 15, marginTop: 2 },
-  track: { height: 4, backgroundColor: theme.surfaceHi, borderRadius: 2, overflow: 'hidden', marginBottom: 18 },
+  track: {
+    height: 4,
+    backgroundColor: theme.surfaceHi,
+    borderRadius: 2,
+    overflow: 'hidden',
+    marginBottom: 18,
+  },
   fill: { height: 4, backgroundColor: theme.xp },
   row: {
     flexDirection: 'row',

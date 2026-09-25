@@ -19,7 +19,7 @@ trading day, revealed one bar at a time.
 4. **No profit target.** Exits are stop, bell, or the player. Without a target the magnets become
    the actual decision tool — this is what makes daily context load-bearing instead of decorative.
 5. **Passing earns XP.** Most bars are untradeable. An app that only rewards action trains
-   overtrading, the exact habit it exists to cure. Discipline is never *punished*, only
+   overtrading, the exact habit it exists to cure. Discipline is never _punished_, only
    unrewarded — XP must never go backwards.
 6. **Money and process are separate books.** R is honest, including losses. XP is process and
    drives levels. A player can lose and still level up, and the summary says so out loud.
@@ -43,7 +43,7 @@ squash the bars. On a gap day the whole of yesterday sits above price — exactl
 
 - **Three market states**, cycling: breakout → channel → trading range
 - **Always-in direction**: if you had to hold something right now, which way
-- **H1/H2/L1/L2**: pullback counting. Brooks prefers the *second* entry — the market tries
+- **H1/H2/L1/L2**: pullback counting. Brooks prefers the _second_ entry — the market tries
   everything twice, and the first attempt usually fails
 - **Signal bar quality**: body/range ratio, where it closed in its own range, tails
 - **Trader's equation**: `P(win) × reward > P(loss) × risk`. Shown live as R-to-next-magnet on
@@ -56,7 +56,7 @@ squash the bars. On a gap day the whole of yesterday sits above price — exactl
 `core/setups.ts` uses the 20-EMA as a trend filter and resets pullback counts when price closes
 through it. Brooks counts legs by eye using swing structure a human reads in context. This is a
 defensible mechanical proxy, **not** a faithful reproduction — which is why it drives XP but never
-decides whether the player was *right*. The money score comes from what price actually did.
+decides whether the player was _right_. The money score comes from what price actually did.
 
 If you make the detector stricter or looser, check the density test: it should fire on roughly
 5–15% of bars (currently 10.7%, about 8 per session). Much more and it trains overtrading; much

@@ -176,6 +176,8 @@ describe('isTradeable', () => {
   });
   it('respects the threshold', () => {
     expect(isTradeable({ kind: 'H2', dir: 'long', quality: TRADEABLE, reasons: [] })).toBe(true);
-    expect(isTradeable({ kind: 'H2', dir: 'long', quality: TRADEABLE - 0.01, reasons: [] })).toBe(false);
+    expect(isTradeable({ kind: 'H2', dir: 'long', quality: TRADEABLE - 0.01, reasons: [] })).toBe(
+      false
+    );
   });
 });

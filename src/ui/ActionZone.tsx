@@ -40,7 +40,12 @@ export function ActionZone(p: Props) {
     return (
       <View style={styles.wrap}>
         <View style={styles.row}>
-          <HoldButton label="SEE RESULTS" onTap={p.onSummary} tint={theme.text} fill={theme.surfaceHi} />
+          <HoldButton
+            label="SEE RESULTS"
+            onTap={p.onSummary}
+            tint={theme.text}
+            fill={theme.surfaceHi}
+          />
         </View>
       </View>
     );
@@ -115,7 +120,15 @@ export function ActionZone(p: Props) {
   );
 }
 
-function Meta({ label, value, tint = theme.text }: { label: string; value: string; tint?: string }) {
+function Meta({
+  label,
+  value,
+  tint = theme.text,
+}: {
+  label: string;
+  value: string;
+  tint?: string;
+}) {
   return (
     <View style={styles.meta}>
       <Text style={styles.metaLabel}>{label}</Text>

@@ -36,9 +36,7 @@ describe('makeOrder', () => {
       const order = makeOrder(seed);
       expect(order.length).toBe(db.sessions.length);
       expect(new Set(order).size).toBe(db.sessions.length);
-      expect([...order].sort((a, b) => a - b)).toEqual(
-        db.sessions.map((_, i) => i)
-      );
+      expect([...order].sort((a, b) => a - b)).toEqual(db.sessions.map((_, i) => i));
     }
   });
 

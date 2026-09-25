@@ -122,7 +122,9 @@ export function setupAt(ctx: SetupContext, index: number): SetupSignal {
   if (count == null) return NONE;
 
   const kind = ((dir === 'long' ? 'H' : 'L') + count) as SetupKind;
-  const reasons: string[] = [`${kind}: pullback ${count} in a ${dir === 'long' ? 'bull' : 'bear'} trend`];
+  const reasons: string[] = [
+    `${kind}: pullback ${count} in a ${dir === 'long' ? 'bull' : 'bear'} trend`,
+  ];
 
   // Brooks strongly prefers the second entry.
   let quality = count === 2 ? 0.55 : count === 1 ? 0.3 : 0.35;

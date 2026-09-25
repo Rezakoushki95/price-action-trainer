@@ -15,14 +15,33 @@ import { MAGNET_META } from '../magnets';
 import type { SetupSignal } from '../setups';
 import type { ClosedTrade } from '../types';
 
-const good: SetupSignal = { kind: 'H2', dir: 'long', quality: 0.8, reasons: ['H2 in a bull trend'] };
-const weak: SetupSignal = { kind: 'H1', dir: 'long', quality: 0.3, reasons: ['H1, doji signal bar'] };
+const good: SetupSignal = {
+  kind: 'H2',
+  dir: 'long',
+  quality: 0.8,
+  reasons: ['H2 in a bull trend'],
+};
+const weak: SetupSignal = {
+  kind: 'H1',
+  dir: 'long',
+  quality: 0.3,
+  reasons: ['H1, doji signal bar'],
+};
 const none: SetupSignal = { kind: null, dir: null, quality: 0, reasons: [] };
 
 const trade = (over: Partial<ClosedTrade>): ClosedTrade => ({
-  dir: 'long', entryIndex: 0, entry: 100, stop: 99, risk: 1,
-  exitIndex: 5, exit: 102, reason: 'manual', r: 2,
-  maxFavourableR: 2, maxAdverseR: 0, ...over,
+  dir: 'long',
+  entryIndex: 0,
+  entry: 100,
+  stop: 99,
+  risk: 1,
+  exitIndex: 5,
+  exit: 102,
+  reason: 'manual',
+  r: 2,
+  maxFavourableR: 2,
+  maxAdverseR: 0,
+  ...over,
 });
 
 describe('levels', () => {

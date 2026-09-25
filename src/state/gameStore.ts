@@ -170,7 +170,7 @@ export function makeOrder(seed: number): number[] {
 }
 
 /** A seed for a player who does not have one yet. */
-const freshSeed = () => (Math.floor(Math.random() * 0x100000000) >>> 0) || 1;
+const freshSeed = () => Math.floor(Math.random() * 0x100000000) >>> 0 || 1;
 
 const INITIAL_SEED = freshSeed();
 const initial = makeView(makeOrder(INITIAL_SEED), 0);
@@ -335,7 +335,11 @@ export const useGame = create<GameState>()(
       name: 'brooks-trainer',
       storage: createJSONStorage(() => AsyncStorage),
       // Only the player's progress survives a restart; the session in flight does not.
-      partialize: (s): Persisted => ({ progress: s.progress, sessionIdx: s.sessionIdx, seed: s.seed }),
+      partialize: (s): Persisted => ({
+        progress: s.progress,
+        sessionIdx: s.sessionIdx,
+        seed: s.seed,
+      }),
       onRehydrateStorage: () => (state) => {
         if (state) state.hydrateSession(state.sessionIdx);
       },

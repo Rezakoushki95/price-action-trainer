@@ -39,7 +39,11 @@ describe('session setup', () => {
   });
 
   it('shows only the level-1 magnets to a new player', () => {
-    expect(magnetsFor(S().view, 0).map((m) => m.key).sort()).toEqual(['yHigh', 'yLow']);
+    expect(
+      magnetsFor(S().view, 0)
+        .map((m) => m.key)
+        .sort()
+    ).toEqual(['yHigh', 'yLow']);
   });
 
   it('has the EMA defined from the very first tradeable bar', () => {

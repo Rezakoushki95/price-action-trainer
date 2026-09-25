@@ -65,8 +65,7 @@ export function stopFillPrice(pos: OpenPosition, bar: Bar): number | null {
 }
 
 export type StepResult =
-  | { status: 'open'; position: LivePosition }
-  | { status: 'closed'; trade: ClosedTrade };
+  { status: 'open'; position: LivePosition } | { status: 'closed'; trade: ClosedTrade };
 
 /**
  * Carry the position through one bar.

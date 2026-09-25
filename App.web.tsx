@@ -20,9 +20,18 @@ export default function App() {
       opts={{ locateFile: (file: string) => `/${file}` }}
       getComponent={() => import('./src/Game')}
       fallback={
-        <View style={{ flex: 1, backgroundColor: theme.bg, alignItems: 'center', justifyContent: 'center' }}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: theme.bg,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <ActivityIndicator color={theme.ema} />
-          <Text style={{ color: theme.textDim, marginTop: 12, fontSize: 12 }}>loading chart engine…</Text>
+          <Text style={{ color: theme.textDim, marginTop: 12, fontSize: 12 }}>
+            loading chart engine…
+          </Text>
         </View>
       }
     />

@@ -76,7 +76,16 @@ export function ChartCanvas({ view, index, position, magnets, reveal, width, hei
         const up = bar.c >= bar.o;
         const body = isOvernight ? preBody : up ? bullBody : bearBody;
         const wick = isOvernight ? preWick : up ? bullWick : bearWick;
-        addBar(body, wick, cx, geom.barW, geom.y(bar.o), geom.y(bar.h), geom.y(bar.l), geom.y(bar.c));
+        addBar(
+          body,
+          wick,
+          cx,
+          geom.barW,
+          geom.y(bar.o),
+          geom.y(bar.h),
+          geom.y(bar.l),
+          geom.y(bar.c)
+        );
       }
 
       const e = view.ema[i];
@@ -107,7 +116,18 @@ export function ChartCanvas({ view, index, position, magnets, reveal, width, hei
       p.lineTo(geom.plotW + CHART.rightPad - 4, y);
     }
 
-    return { bullBody, bearBody, bullWick, bearWick, preBody, preWick, emaPath, bell, magnetPath, keyMagnetPath };
+    return {
+      bullBody,
+      bearBody,
+      bullWick,
+      bearWick,
+      preBody,
+      preWick,
+      emaPath,
+      bell,
+      magnetPath,
+      keyMagnetPath,
+    };
   }, [view, geom, magnets, height]);
 
   /** The bar under the playhead, drawn partially according to `reveal`. */
@@ -170,7 +190,13 @@ export function ChartCanvas({ view, index, position, magnets, reveal, width, hei
         )}
 
         {/* Overnight bars are context and never tradeable, so they recede. */}
-        <Path path={scene.preWick} color={theme.textFaint} style="stroke" strokeWidth={1} opacity={0.5} />
+        <Path
+          path={scene.preWick}
+          color={theme.textFaint}
+          style="stroke"
+          strokeWidth={1}
+          opacity={0.5}
+        />
         <Path path={scene.preBody} color={theme.textFaint} style="fill" opacity={0.4} />
 
         <Path path={scene.emaPath} color={theme.ema} style="stroke" strokeWidth={1.8} />

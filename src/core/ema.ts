@@ -31,10 +31,7 @@ export function ema(values: number[], period: number = EMA_PERIOD): (number | nu
 }
 
 /** Convenience: EMA over bar closes. */
-export function emaOfCloses(
-  bars: { c: number }[],
-  period: number = EMA_PERIOD
-): (number | null)[] {
+export function emaOfCloses(bars: { c: number }[], period: number = EMA_PERIOD): (number | null)[] {
   return ema(
     bars.map((b) => b.c),
     period

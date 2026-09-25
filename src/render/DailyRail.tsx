@@ -44,7 +44,8 @@ export function DailyRail({ bars, yesterdayIndex, width, height }: Props) {
     const levels = Skia.Path.Make();
     const highlight = Skia.Path.Make();
 
-    if (!bars.length) return { bull, bear, wick, yBull, yBear, yWick, levels, highlight, y: (_: number) => 0 };
+    if (!bars.length)
+      return { bull, bear, wick, yBull, yBear, yWick, levels, highlight, y: (_: number) => 0 };
 
     let min = Infinity;
     let max = -Infinity;
@@ -97,13 +98,25 @@ export function DailyRail({ bars, yesterdayIndex, width, height }: Props) {
   return (
     <View style={{ width, height }}>
       <Canvas style={{ width, height }}>
-        <Path path={scene.highlight} color={theme.magnetKey} style="stroke" strokeWidth={1} opacity={0.45} />
+        <Path
+          path={scene.highlight}
+          color={theme.magnetKey}
+          style="stroke"
+          strokeWidth={1}
+          opacity={0.45}
+        />
         <Path path={scene.levels} color={theme.magnetKey} style="stroke" strokeWidth={1}>
           <DashPathEffect intervals={[6, 4]} />
         </Path>
 
         {/* The rest of the month recedes; only yesterday is at full strength. */}
-        <Path path={scene.wick} color={theme.textFaint} style="stroke" strokeWidth={1} opacity={0.55} />
+        <Path
+          path={scene.wick}
+          color={theme.textFaint}
+          style="stroke"
+          strokeWidth={1}
+          opacity={0.55}
+        />
         <Path path={scene.bull} color={theme.bullDim} style="fill" opacity={0.9} />
         <Path path={scene.bear} color={theme.bearDim} style="fill" opacity={0.9} />
 

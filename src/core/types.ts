@@ -36,13 +36,13 @@ export interface DailyBar {
  * scoring against them cannot be argued with.
  */
 export interface Magnets {
-  yHigh: number;  // yesterday's regular-session high
-  yLow: number;   // yesterday's regular-session low
+  yHigh: number; // yesterday's regular-session high
+  yLow: number; // yesterday's regular-session low
   yClose: number; // yesterday's regular-session close
-  yMid: number;   // midpoint of yesterday's range
+  yMid: number; // midpoint of yesterday's range
   onHigh: number; // overnight (Globex) high
-  onLow: number;  // overnight (Globex) low
-  open: number;   // today's regular-session open
+  onLow: number; // overnight (Globex) low
+  open: number; // today's regular-session open
 }
 
 export type MagnetKey = keyof Magnets;

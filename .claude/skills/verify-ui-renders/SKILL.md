@@ -37,13 +37,13 @@ Chrome lives at `/c/Program Files/Google/Chrome/Application/chrome.exe` (Edge al
 
 ## Traps that cost time here
 
-| Symptom | Cause |
-|---|---|
-| Canvas blank, text around it fine | `--disable-gpu` starves CanvasKit of a GL surface. Use the swiftshader flags above. |
-| Content cut off at the right | Windows clamps headless windows to ~496px wide. The page laid out at 496 and the capture cropped at 390 — not a layout bug. Screenshot at 500+. |
-| Blank white page | `expo export` does not copy `public/` into the build, so `canvaskit.wasm` is missing. |
-| WASM fails to instantiate | `instantiateStreaming` rejects any MIME type but `application/wasm`. |
-| Everything renders but one region | Something is guarded behind an async measurement. Suspect `onLayout`. |
+| Symptom                           | Cause                                                                                                                                           |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Canvas blank, text around it fine | `--disable-gpu` starves CanvasKit of a GL surface. Use the swiftshader flags above.                                                             |
+| Content cut off at the right      | Windows clamps headless windows to ~496px wide. The page laid out at 496 and the capture cropped at 390 — not a layout bug. Screenshot at 500+. |
+| Blank white page                  | `expo export` does not copy `public/` into the build, so `canvaskit.wasm` is missing.                                                           |
+| WASM fails to instantiate         | `instantiateStreaming` rejects any MIME type but `application/wasm`.                                                                            |
+| Everything renders but one region | Something is guarded behind an async measurement. Suspect `onLayout`.                                                                           |
 
 ## When the picture is wrong, instrument — do not guess
 

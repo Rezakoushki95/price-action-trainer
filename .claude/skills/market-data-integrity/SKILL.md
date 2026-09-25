@@ -19,11 +19,12 @@ Consequence: a "yesterday's high" taken from the daily series would be a level f
 contract** — invisible on the chart, or worse, plausible and fictional.
 
 **Rules:**
-- Derive levels from the *same series* you draw. Same contract by construction.
+
+- Derive levels from the _same series_ you draw. Same contract by construction.
 - Use the other series only as a **witness** for detecting stitches, never as a price source.
 - A real roll is a **sustained** offset shift held for days. A one-day spike is provider junk
   (Yahoo emits daily closes off the tick grid, e.g. `7508.43` on a 0.25-tick instrument).
-- Detect the *start* of an anomalous run and drop that one session — the end of the run is just
+- Detect the _start_ of an anomalous run and drop that one session — the end of the run is just
   the other series catching up and costs nothing.
 
 ## Assertions worth having
@@ -54,4 +55,4 @@ forever at no cost. Merging also means a provider outage costs new data, not exi
 
 Hitting an undocumented endpoint from the shipped app makes the app fail when the endpoint does.
 Bake the data in: zero network dependency, works offline, no key in the client, and a broken
-endpoint only stops *new* collection.
+endpoint only stops _new_ collection.

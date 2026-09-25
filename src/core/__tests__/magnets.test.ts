@@ -23,7 +23,9 @@ const M: Magnets = {
 
 describe('unlock ladder', () => {
   it('starts a beginner with only yesterday high and low', () => {
-    const keys = visibleMagnets(M, 1).map((m) => m.key).sort();
+    const keys = visibleMagnets(M, 1)
+      .map((m) => m.key)
+      .sort();
     expect(keys).toEqual(['yHigh', 'yLow']);
   });
 
@@ -51,7 +53,11 @@ describe('unlock ladder', () => {
   });
 
   it('reports exactly what a level-up revealed', () => {
-    expect(newlyUnlocked(1, 2).map((m) => m.key).sort()).toEqual(['open', 'yClose']);
+    expect(
+      newlyUnlocked(1, 2)
+        .map((m) => m.key)
+        .sort()
+    ).toEqual(['open', 'yClose']);
     expect(newlyUnlocked(3, 3)).toEqual([]);
   });
 

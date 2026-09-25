@@ -34,7 +34,12 @@ export function levelFromXp(xp: number): number {
 }
 
 /** Progress toward the next level, 0..1. Returns 1 at max level. */
-export function levelProgress(xp: number): { level: number; into: number; need: number; frac: number } {
+export function levelProgress(xp: number): {
+  level: number;
+  into: number;
+  need: number;
+  frac: number;
+} {
   const level = levelFromXp(xp);
   if (level >= MAX_LEVEL) return { level, into: 0, need: 0, frac: 1 };
   const base = LEVEL_THRESHOLDS[level - 1];
@@ -145,8 +150,10 @@ export function scoreExit(trade: ClosedTrade): DecisionScore {
       good: true, // a stop-out is not a process failure -- the plan worked as designed
       verdict: `Stopped ${trade.r.toFixed(2)}R`,
       detail: near
-        ? [`It was +${trade.maxFavourableR.toFixed(2)}R in your favour first.`,
-           'A good trade can still lose. That is the job.']
+        ? [
+            `It was +${trade.maxFavourableR.toFixed(2)}R in your favour first.`,
+            'A good trade can still lose. That is the job.',
+          ]
         : ['The stop did what it is for.'],
     };
   }

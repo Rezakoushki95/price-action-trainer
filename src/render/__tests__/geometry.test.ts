@@ -154,7 +154,9 @@ function render(sessionIdx: number, barsIn: number) {
   for (const m of mags) {
     const y = Math.round(g.y(m.price) / SCALE);
     if (y < 0 || y >= rows) {
-      offscreen.push(`${m.label}${y < 0 ? '↑' : '↓'}${Math.abs(m.price - v.bars[index].c).toFixed(0)}`);
+      offscreen.push(
+        `${m.label}${y < 0 ? '↑' : '↓'}${Math.abs(m.price - v.bars[index].c).toFixed(0)}`
+      );
       continue;
     }
     for (let c = 0; c < cols - 6; c++) if (grid[y][c] === ' ') grid[y][c] = '-';
@@ -165,7 +167,8 @@ function render(sessionIdx: number, barsIn: number) {
     const b = v.bars[i];
     const x = g.x(i);
     const overnight = i < v.rthStart;
-    for (let y = Math.round(g.y(b.h)); y <= Math.round(g.y(b.l)); y++) put(x, y, overnight ? ':' : '|');
+    for (let y = Math.round(g.y(b.h)); y <= Math.round(g.y(b.l)); y++)
+      put(x, y, overnight ? ':' : '|');
     const top = Math.round(g.y(Math.max(b.o, b.c)));
     const bot = Math.round(g.y(Math.min(b.o, b.c)));
     for (let y = top; y <= bot; y++) put(x, y, overnight ? '.' : b.c >= b.o ? '#' : 'x');
@@ -246,7 +249,9 @@ describe('visual smoke test', () => {
         if (fill < worst.fill) worst = { date: `session #${s}`, fill };
       }
     }
-    console.log(`\nworst bar/axis fill across all sessions: ${worst.fill.toFixed(1)}% on ${worst.date}`);
+    console.log(
+      `\nworst bar/axis fill across all sessions: ${worst.fill.toFixed(1)}% on ${worst.date}`
+    );
     expect(worst.fill).toBeGreaterThan(33);
   });
 });
