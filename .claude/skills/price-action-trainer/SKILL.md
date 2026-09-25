@@ -1,6 +1,6 @@
 ---
 name: price-action-trainer
-description: Use when working on this price-action trainer app — adding setups, magnets, screens, scoring or sessions. Holds the design invariants that must not be broken and the the playbook domain model the app teaches.
+description: Use when working on this price-action trainer app — adding setups, magnets, screens, scoring or sessions. Holds the design invariants that must not be broken and the price-action domain model the app teaches.
 ---
 
 # Al Price Action Trainer — Design Invariants
