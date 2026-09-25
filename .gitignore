@@ -39,3 +39,12 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# web preview build
+dist-web/
+
+# screenshots
+shots/
+
+# 8MB copy of node_modules/canvaskit-wasm, restored by scripts/copy-canvaskit.mjs
+public/canvaskit.wasm

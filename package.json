@@ -3,20 +3,43 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
-    "expo": "~57.0.13",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@shopify/react-native-skia": "2.6.2",
+    "expo": "~57.0.14",
+    "expo-haptics": "~57.0.1",
+    "expo-splash-screen": "~57.0.7",
     "expo-status-bar": "~57.0.1",
+    "expo-system-ui": "~57.0.2",
     "react": "19.2.3",
-    "react-native": "0.86.2"
+    "react-native": "0.86.2",
+    "react-native-gesture-handler": "~2.32.0",
+    "react-native-reanimated": "4.5.1",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-worklets": "0.10.1",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@expo/metro-runtime": "~57.0.11",
+    "@types/node": "^26.2.0",
     "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
+    "puppeteer-core": "^24.43.1",
+    "react-dom": "19.2.3",
+    "react-native-web": "^0.21.2",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.10"
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "data": "node scripts/fetch-sessions.mjs",
+    "web:build": "expo export --platform web --output-dir dist-web --clear",
+    "web:serve": "node scripts/serve-web.mjs",
+    "shoot": "node scripts/shoot.mjs",
+    "preweb": "node scripts/copy-canvaskit.mjs"
   },
   "private": true
 }
