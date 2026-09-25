@@ -1,18 +1,24 @@
 # Al Brooks Trainer
 
-A mobile trading *trainer* that teaches Al Brooks price action, simplified, using the
+A mobile trading _trainer_ that teaches Al Brooks price action, simplified, using the
 short-video reinforcement loop. Not a backtester and not a charting app: a game whose unit of
 play is **one real trading day of ES futures, revealed one bar at a time**.
 
+<p align="center">
+  <img src="docs/screenshots/open.png" width="230" alt="The open: overnight bars, the 20-EMA, yesterday's high and low as magnets">
+  <img src="docs/screenshots/in-trade.png" width="230" alt="In a trade: entry, stop and the band of risk drawn on the chart">
+  <img src="docs/screenshots/summary.png" width="230" alt="Session summary: R made against XP learned">
+</p>
+
 ## The idea
 
-Bar-by-bar replay is *already* a variable-ratio reward schedule — the same mechanism that makes
+Bar-by-bar replay is _already_ a variable-ratio reward schedule — the same mechanism that makes
 short-video feeds compulsive. The job was never to bolt gamification onto a chart; it was to
 avoid smothering the loop that already exists. Two consequences are treated as non-negotiable:
 
 - **Bars animate in, they never snap in.** A bar that appears instantly is information. A bar
   whose wick extends and body fills over ~220ms is a slot reel.
-- **Losses are as watchable as wins.** Near-miss rendering — *stopped by one tick, then it ran* —
+- **Losses are as watchable as wins.** Near-miss rendering — _stopped by one tick, then it ran_ —
   is more motivating than a clean loss, and it is the most important emotional lesson in Brooks'
   material.
 
@@ -33,16 +39,16 @@ sweating it, the heartbeat is identical. 78 taps and the day is over.
 the summary tells you how many you blew through. A stop still fires and halts the stream — you
 keep the risk, you lose the chance to have managed it. Impatience is the mechanic, not a bug.
 
-| | |
-|---|---|
-| Instrument | ES=F — real E-mini S&P 500, CME |
-| Timeframe | 5-minute bars |
-| Session | Full regular session, 09:30–16:00 ET = 78 bars |
-| Entry | Filled at the close of the bar you decided on |
-| Stop | One tick beyond the signal bar's extreme |
-| Target | **None** — the magnets are the only thing telling you where to get out |
-| Exit | Stop · 16:00 bell · you |
-| Positions | Unlimited per session, one at a time |
+|            |                                                                        |
+| ---------- | ---------------------------------------------------------------------- |
+| Instrument | ES=F — real E-mini S&P 500, CME                                        |
+| Timeframe  | 5-minute bars                                                          |
+| Session    | Full regular session, 09:30–16:00 ET = 78 bars                         |
+| Entry      | Filled at the close of the bar you decided on                          |
+| Stop       | One tick beyond the signal bar's extreme                               |
+| Target     | **None** — the magnets are the only thing telling you where to get out |
+| Exit       | Stop · 16:00 bell · you                                                |
+| Positions  | Unlimited per session, one at a time                                   |
 
 No fixed target is the load-bearing decision. Without one, the daily-chart magnets stop being
 decoration and become the thing the game is actually played on.
@@ -53,12 +59,12 @@ Only the 20-bar EMA is ever drawn as an indicator — Brooks puts it on every ch
 configurable. The horizontal levels unlock as you level up, which solves chart clutter and player
 progression with one mechanism:
 
-| Level | Unlocks |
-|---|---|
-| 1 | Yesterday's high, yesterday's low |
-| 2 | Yesterday's close, today's open |
-| 3 | Yesterday's midpoint |
-| 4 | Overnight (Globex) high and low |
+| Level | Unlocks                           |
+| ----- | --------------------------------- |
+| 1     | Yesterday's high, yesterday's low |
+| 2     | Yesterday's close, today's open   |
+| 3     | Yesterday's midpoint              |
+| 4     | Overnight (Globex) high and low   |
 
 Every one is a **hard number read off bars the player could scroll back and see**, so scoring
 against them cannot be argued with. Measured moves, breakout-point retests, wedge targets and
@@ -71,7 +77,7 @@ sit above price, which is exactly when you need to know where it is.
 
 The daily rail highlights the specific daily bar each level came from and runs those levels out
 to its right edge in the same colour they are drawn on the chart below, so the learner sees where
-a magnet *comes from*.
+a magnet _comes from_.
 
 ## Scoring
 
@@ -136,6 +142,18 @@ npx tsc --noEmit      # typecheck
 npm run data          # refresh market data
 ```
 
+## Quality
+
+- **180 unit and integration tests** (`npm test`). Every shipped session is played bar by bar
+  to the bell; the play-order shuffle is proven not to move a single magnet; a source scan fails
+  if a date ever reaches the UI.
+- **Strict TypeScript**, ESLint (`eslint-config-expo`) and Prettier: `npm run lint`,
+  `npm run format:check`, `npm run typecheck`.
+- **CI on every push**: lint, format, typecheck, tests, `expo-doctor`, and an Android bundle
+  export that is grepped for anything identifying before the job can go green.
+- **Rendered, not just tested.** Passing tests do not prove a canvas is not blank. `npm run shoot`
+  renders the app at a 390×844 phone viewport and taps through a session; it has caught a blank
+  chart, a loss painted green and taps that silently did nothing.
 
 ## Data
 
@@ -174,14 +192,13 @@ anyway. It arguably teaches better, since Brooks is about structure rather than 
 The build fails if any of it leaks, and `src/core/__tests__/data.test.ts` re-checks the shipped
 file on every test run.
 
-
 Three things it handles that are easy to get wrong:
 
 - **Overnight bars are mandatory.** A 20-bar EMA needs 20 bars; at 09:30 there is exactly one.
   Without Globex data the only indicator in the app is undefined through the whole first hour.
   80 seed bars are kept per session.
-- **Contract rolls.** ES is a quarterly future and Yahoo's daily and intraday series *do not roll
-  on the same date* — in June 2026 the intraday switched to ESU26 on the 15th while the daily
+- **Contract rolls.** ES is a quarterly future and Yahoo's daily and intraday series _do not roll
+  on the same date_ — in June 2026 the intraday switched to ESU26 on the 15th while the daily
   stayed on ESM26 until expiry on the 19th, leaving four sessions ~68 points apart between the two
   series. Magnets are therefore derived from the intraday series only, and sessions that straddle
   a stitch are dropped.
@@ -220,4 +237,4 @@ simulator and why a change of rendering platform would not touch them.
 - **The setup detector is a stated simplification.** Brooks counts pullback legs by eye using
   swing structure a human reads in context; `core/setups.ts` uses the 20-bar EMA as a trend filter
   and resets the count when price closes through it. That is why it drives XP but never decides
-  whether the player was *right* — the money score comes from what price actually did.
+  whether the player was _right_ — the money score comes from what price actually did.
