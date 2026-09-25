@@ -25,22 +25,21 @@
 import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer-core';
+import { launch } from 'puppeteer-core';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = process.env.SHOT_DIR ?? resolve(__dirname, '../shots');
 const URL = process.env.SHOT_URL ?? 'http://localhost:3000/';
 const SEED = Number(process.env.SHOT_SEED ?? 42);
 
-const CHROME =
-  process.env.CHROME_PATH ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe';
+const CHROME = process.env.CHROME_PATH ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 
 /** iPhone 14-ish. A real phone viewport, not a small desktop window. */
 const PHONE = { width: 390, height: 844, deviceScaleFactor: 3, isMobile: true, hasTouch: false };
 
 mkdirSync(OUT, { recursive: true });
 
-const browser = await puppeteer.launch({
+const browser = await launch({
   executablePath: CHROME,
   headless: true,
   args: [
@@ -66,8 +65,13 @@ await page.evaluateOnNewDocument((seed) => {
         seed,
         sessionIdx: 0,
         progress: {
-          xp: 0, streak: 0, bestStreak: 0,
-          sessionsPlayed: 0, totalR: 0, tradesTaken: 0, wins: 0,
+          xp: 0,
+          streak: 0,
+          bestStreak: 0,
+          sessionsPlayed: 0,
+          totalR: 0,
+          tradesTaken: 0,
+          wins: 0,
         },
       },
       version: 0,
@@ -78,7 +82,9 @@ await page.evaluateOnNewDocument((seed) => {
 await page.goto(URL, { waitUntil: 'networkidle0', timeout: 60000 });
 
 // CanvasKit is an 8MB wasm download; nothing is on screen until it lands.
-await page.waitForFunction(() => document.querySelectorAll('canvas').length >= 2, { timeout: 60000 });
+await page.waitForFunction(() => document.querySelectorAll('canvas').length >= 2, {
+  timeout: 60000,
+});
 await new Promise((r) => setTimeout(r, 600));
 
 const settle = (ms = 320) => new Promise((r) => setTimeout(r, ms));
@@ -114,15 +120,16 @@ async function tap(label, times = 1) {
 }
 
 /** What the HUD currently reads, so the script can assert it is actually playing. */
-const hud = () =>
-  page.evaluate(() => document.body.innerText.split('\n').slice(0, 6).join(' | '));
+const hud = () => page.evaluate(() => document.body.innerText.split('\n').slice(0, 6).join(' | '));
 
 async function shoot(name) {
   await page.screenshot({ path: resolve(OUT, `${name}.png`) });
   console.log(`  ${name.padEnd(18)} ${await hud()}`);
 }
 
-console.log(`Shooting ${URL} at ${PHONE.width}x${PHONE.height} dpr${PHONE.deviceScaleFactor}, seed ${SEED}\n`);
+console.log(
+  `Shooting ${URL} at ${PHONE.width}x${PHONE.height} dpr${PHONE.deviceScaleFactor}, seed ${SEED}\n`
+);
 
 await shoot('01-open');
 

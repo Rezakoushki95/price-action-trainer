@@ -69,7 +69,7 @@ export default function App() {
     Haptics.notificationAsync(
       won ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning
     ).catch(() => {});
-  }, [g.feedback?.id]);
+  }, [g.feedback]);
 
   const magnets = useMemo(() => magnetsFor(g.view, g.progress.xp), [g.view, g.progress.xp]);
   const railData = useMemo(() => railBars(g.view.session), [g.view.session]);

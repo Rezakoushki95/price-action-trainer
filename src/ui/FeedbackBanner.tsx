@@ -6,14 +6,15 @@
  * and it never blocks the next tap.
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 import { theme } from '../render/theme';
 import type { Feedback } from '../state/gameStore';
 import { wasNearMiss } from '../core/trade';
 
 export function FeedbackBanner({ feedback }: { feedback: Feedback | null }) {
-  const fade = useRef(new Animated.Value(0)).current;
+  // Lazily created once; reading a ref during render is what the hooks lint forbids.
+  const [fade] = useState(() => new Animated.Value(0));
 
   useEffect(() => {
     if (!feedback) return;
@@ -23,7 +24,7 @@ export function FeedbackBanner({ feedback }: { feedback: Feedback | null }) {
       Animated.delay(2600),
       Animated.timing(fade, { toValue: 0, duration: 400, useNativeDriver: true }),
     ]).start();
-  }, [feedback?.id, fade]);
+  }, [feedback, fade]);
 
   if (!feedback) return <View style={styles.spacer} />;
 

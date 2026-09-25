@@ -11,27 +11,28 @@ import { CHART } from './theme';
  *
  * Skipped entirely while fast-forwarding -- at 45ms a bar there is nothing to
  * animate, and trying would only cost frames.
+ *
+ * State is keyed by the bar it belongs to rather than reset synchronously in the
+ * effect: a key the state has not caught up with simply renders as 0, so no
+ * setState runs during the effect body and no cascading render is triggered.
  */
 export function useReveal(key: number, skip: boolean, duration = CHART.revealMs): number {
-  const [t, setT] = useState(1);
+  const [state, setState] = useState<{ key: number; t: number }>({ key, t: 1 });
 
   useEffect(() => {
-    if (skip) {
-      setT(1);
-      return;
-    }
+    if (skip) return;
     let raf = 0;
     const start = Date.now();
-    setT(0);
 
     const tick = () => {
       const p = Math.min(1, (Date.now() - start) / duration);
-      setT(p);
+      setState({ key, t: p });
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [key, skip, duration]);
 
-  return t;
+  if (skip) return 1;
+  return state.key === key ? state.t : 0;
 }

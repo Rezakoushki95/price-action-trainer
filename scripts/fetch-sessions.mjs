@@ -29,6 +29,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { Buffer } from 'node:buffer';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, '../src/data/sessions.json');
@@ -56,8 +57,12 @@ const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' };
  */
 const fmt = new Intl.DateTimeFormat('en-CA', {
   timeZone: 'America/New_York',
-  year: 'numeric', month: '2-digit', day: '2-digit',
-  hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23',
 });
 
 /** unix seconds -> { date: 'YYYY-MM-DD', time: 'HH:MM' } in New York time. */
@@ -96,7 +101,10 @@ function toBars(result) {
     if (o?.[i] == null || h?.[i] == null || l?.[i] == null || c?.[i] == null) continue;
     bars.push({
       t: ts[i],
-      o: round(o[i]), h: round(h[i]), l: round(l[i]), c: round(c[i]),
+      o: round(o[i]),
+      h: round(h[i]),
+      l: round(l[i]),
+      c: round(c[i]),
       v: v?.[i] ?? 0,
     });
   }
@@ -209,7 +217,9 @@ for (let i = 0; i < dates.length; i++) {
     // One isolated day. A real roll persists for days until the other series
     // follows; a lone outlier is Yahoo daily junk (it emits closes off the 0.25
     // tick grid). Harmless -- we take no price from that series.
-    console.log(`  ignoring 1-day offset outlier at ${dates[i]} (${diffs[i].toFixed(2)} vs baseline ${baseline.toFixed(2)}) -- daily-series junk`);
+    console.log(
+      `  ignoring 1-day offset outlier at ${dates[i]} (${diffs[i].toFixed(2)} vs baseline ${baseline.toFixed(2)}) -- daily-series junk`
+    );
     continue;
   }
 
@@ -218,7 +228,7 @@ for (let i = 0; i < dates.length; i++) {
   rollDates.add(dates[i]);
   console.log(
     `  contract stitch at ${dates[i]}: offset held ${diffs[i].toFixed(2)} vs baseline ` +
-    `${baseline.toFixed(2)} for ${len} sessions (through ${dates[end]})`
+      `${baseline.toFixed(2)} for ${len} sessions (through ${dates[end]})`
   );
 }
 
