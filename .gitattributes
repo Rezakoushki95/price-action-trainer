@@ -1,0 +1,10 @@
+# Normalise line endings so Windows checkouts stop rewriting every file.
+* text=auto eol=lf
+
+# Binaries
+*.png binary
+*.jpg binary
+*.wasm binary
+*.jks binary
+*.p8 binary
+*.p12 binary
