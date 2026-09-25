@@ -1,5 +1,7 @@
 # Al Brooks Trainer
 
+[![CI](https://github.com/Rezakoushki95/brooks-trainer/actions/workflows/ci.yml/badge.svg)](https://github.com/Rezakoushki95/brooks-trainer/actions/workflows/ci.yml)
+
 A mobile trading _trainer_ that teaches Al Brooks price action, simplified, using the
 short-video reinforcement loop. Not a backtester and not a charting app: a game whose unit of
 play is **one real trading day of ES futures, revealed one bar at a time**.
