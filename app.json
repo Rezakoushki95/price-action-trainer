@@ -1,23 +1,43 @@
 {
   "expo": {
-    "name": "tradingApp",
-    "slug": "tradingApp",
+    "name": "Brooks Trainer",
+    "slug": "brooks-trainer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "scheme": "brookstrainer",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0E13",
+    "primaryColor": "#0B0E13",
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "dk.mamamilla.brookstrainer",
+      "supportsTablet": false,
+      "requireFullScreen": true,
+      "infoPlist": {
+        "UIViewControllerBasedStatusBarAppearance": false
+      }
     },
     "android": {
+      "package": "dk.mamamilla.brookstrainer",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0B0E13",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false
     },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B0E13",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain"
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
