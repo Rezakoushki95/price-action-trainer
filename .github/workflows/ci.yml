@@ -33,8 +33,13 @@ jobs:
       - name: Unit and integration tests
         run: npm test
 
-      - name: Project health
+      # Advisory, not a gate. expo-doctor compares against the newest SDK patch
+      # releases, so it goes red when Expo ships a patch -- with zero changes in
+      # this repo. Version drift is worth seeing in the log; it must not fail the
+      # build or block the bundle check below. Fix with: npx expo install --fix
+      - name: Project health (advisory)
         run: npx expo-doctor
+        continue-on-error: true
 
       # Proves the native JS bundle still builds, and that nothing identifying
       # (dates, symbol, provenance) has crept back into it.
