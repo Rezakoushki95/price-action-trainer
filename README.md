@@ -1,4 +1,4 @@
-# Al Price Action Trainer
+# Price Action Trainer
 
 [![CI](https://github.com/Rezakoushki95/price-action-trainer/actions/workflows/ci.yml/badge.svg)](https://github.com/Rezakoushki95/price-action-trainer/actions/workflows/ci.yml)
 

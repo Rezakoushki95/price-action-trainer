@@ -3,7 +3,7 @@ name: price-action-trainer
 description: Use when working on this price-action trainer app — adding setups, magnets, screens, scoring or sessions. Holds the design invariants that must not be broken and the price-action domain model the app teaches.
 ---
 
-# Al Price Action Trainer — Design Invariants
+# Price Action Trainer — Design Invariants
 
 A trainer that teaches discretionary price action using the short-video reinforcement loop. One real ES
 trading day, revealed one bar at a time.
