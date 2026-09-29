@@ -40,6 +40,12 @@
     ],
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bb10f778-88b2-4430-bb71-a49f6d2d9cf9"
+      }
+    },
+    "owner": "rk1995"
   }
 }
